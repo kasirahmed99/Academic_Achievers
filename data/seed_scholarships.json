@@ -1,0 +1,16 @@
+[
+{
+"name": "DAAD Study Scholarship",
+"country": "Germany",
+"deadline": "2025-10-31",
+"link": "https://www.daad.de/en/",
+"checklist": ["Passport", "Academic transcripts", "Motivation letter", "CV"]
+},
+{
+"name": "Chevening Scholarship",
+"country": "United Kingdom",
+"deadline": "2025-11-07",
+"link": "https://www.chevening.org/",
+"checklist": ["Passport", "2 References", "Degree certificate", "English test (if required)"]
+}
+]
