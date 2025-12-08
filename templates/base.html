@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Academic Achievers{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page">
+
+    <header class="nav">
+        <div class="nav-left">
+            <!-- LOGO: change logo.png to your file name -->
+            <div class="nav-logo" style="padding:0; background:transparent;">
+                <img src="{{ url_for('static', filename='logo.png') }}"
+                     alt="Academic Achievers"
+                     style="width:32px;height:32px;border-radius:999px;object-fit:cover;">
+            </div>
+            <div class="nav-title">
+                <div class="nav-title-main">Academic Achievers</div>
+                <div class="nav-title-sub">Scholarships &amp; Study Abroad</div>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('scholarships') }}" class="nav-link">Scholarships</a>
+            <a href="{{ url_for('eligibility') }}" class="nav-link">Eligibility</a>
+
+            {# ---- IF USER IS LOGGED IN ---- #}
+            {% if session.get('user_id') %}
+                {# Show admin dashboard link only for admins #}
+                {% if session.get('is_admin') %}
+                    <a href="{{ url_for('admin_dashboard') }}" class="nav-link">Admin</a>
+                {% endif %}
+
+                <span class="nav-link" style="cursor:default;">
+                    {{ session.get('user_email') }}
+                </span>
+
+                <a href="{{ url_for('logout') }}" class="nav-link primary">
+                    Logout
+                </a>
+
+            {# ---- IF NOT LOGGED IN ---- #}
+            {% else %}
+                <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                <a href="{{ url_for('signup') }}" class="nav-link primary">Sign up</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        © 2025 Academic Achievers · Helping students find scholarships &amp; study abroad opportunities.
+        <br>
+        <a href="{{ url_for('admin_login') }}">Admin login</a>
+    </footer>
+
+</div>
+</body>
+</html>
