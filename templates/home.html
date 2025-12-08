@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Academic Achievers – Home{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <section class="hero-main">
+        <div class="hero-pill">
+            🎓 Academic Achievers
+            <span>Curated scholarships & study abroad</span>
+        </div>
+
+        <h1 class="hero-title">
+            Find <span>scholarships</span> that match your profile.
+        </h1>
+
+        <p class="hero-sub">
+            Search global scholarships, check deadlines, and explore study abroad options — all in one place.
+            Academic Achievers helps you stay organized with checklists and an eligibility checker.
+        </p>
+
+        <div class="hero-cta-row">
+            <a href="{{ url_for('scholarships') }}" class="btn btn-primary">Browse scholarships</a>
+            <a href="{{ url_for('eligibility') }}" class="btn btn-secondary">Check eligibility</a>
+        </div>
+
+        <div class="hero-meta">
+            <div class="hero-stat">
+                <span class="hero-stat-value">Global coverage</span>
+                <span>Opportunities from multiple countries</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-value">Deadline tracking</span>
+                <span>Keep an eye on important dates</span>
+            </div>
+        </div>
+    </section>
+
+    <aside class="hero-side">
+        <div class="hero-card">
+            <div class="hero-card-title">How Academic Achievers helps you</div>
+            <ul class="hero-card-list">
+                <li>✅ One place to discover scholarships and grants</li>
+                <li>✅ Clear deadline, link, and document checklist</li>
+                <li>✅ Simple admin panel for adding new programs</li>
+                <li>✅ Mobile–friendly experience for students</li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<div class="section-header">
+    <div class="section-title">Quick actions</div>
+    <div class="section-sub">Start with one of these shortcuts.</div>
+</div>
+
+<div class="sch-list">
+    <div class="sch-card">
+        <div class="sch-name">Search scholarships</div>
+        <div class="sch-sub">Filter by country and deadline from our curated list.</div>
+        <div class="sch-bottom">
+            <span class="link-inline">Find scholarships that match your plans.</span>
+            <a class="btn btn-small btn-primary" href="{{ url_for('scholarships') }}">Open list</a>
+        </div>
+    </div>
+
+    <div class="sch-card">
+        <div class="sch-name">Check your eligibility</div>
+        <div class="sch-sub">Use country, level and GPA to see potential fits.</div>
+        <div class="sch-bottom">
+            <span class="link-inline">Great starting point for planning.</span>
+            <a class="btn btn-small btn-secondary" href="{{ url_for('eligibility') }}">Try checker</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
