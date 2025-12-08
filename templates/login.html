@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Login – Academic Achievers{% endblock %}
+
+{% block content %}
+<div class="form-page">
+    <div class="section-header">
+        <div class="section-title">Welcome back</div>
+        <div class="section-sub">Log in to manage your profile and applications.</div>
+    </div>
+
+    <div class="form-card">
+        <h1 class="form-title">Login</h1>
+        <p class="form-sub">
+            Use the same email you used when signing up on Academic Achievers.
+        </p>
+
+        {% if error %}
+            <div class="error-text">{{ error }}</div>
+        {% endif %}
+
+        <form method="post">
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" type="email" name="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-input" type="password" name="password" id="password" required>
+            </div>
+
+            <div style="margin-top: 14px;">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    Login
+                </button>
+            </div>
+
+            <p class="form-sub" style="margin-top: 10px;">
+                New here?
+                <a href="{{ url_for('signup') }}">Create an account</a>.
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
