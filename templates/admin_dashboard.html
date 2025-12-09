@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Admin – Academic Achievers{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <div class="section-title">Admin dashboard</div>
+    <div class="section-sub">
+        Manage scholarships, upload brochures and keep information up to date.
+    </div>
+</div>
+
+<div class="admin-layout">
+    <aside class="admin-side">
+        <div class="side-title">Quick actions</div>
+        <p class="detail-text">
+            • Add new scholarship<br>
+            • Update deadlines<br>
+            • Upload brochure or image<br>
+        </p>
+        <a href="{{ url_for('add_scholarship') }}" class="btn btn-primary btn-small">
+            + Add scholarship
+        </a>
+    </aside>
+
+    <section class="admin-main">
+        <div class="side-title">Scholarship list</div>
+        {% if scholarships %}
+            <div class="admin-list">
+                {% for s in scholarships %}
+                    <article class="admin-item">
+                        <div class="admin-item-title">{{ s.name }}</div>
+                        <div class="admin-item-meta">
+                            {{ s.country }}
+                            {% if s.level %} · {{ s.level }}{% endif %}
+                            {% if s.deadline %} · Deadline: {{ s.deadline }}{% endif %}
+                        </div>
+                        <div class="admin-item-actions">
+                            <a href="{{ url_for('scholarship_detail', sid=s.id) }}" class="btn btn-small btn-secondary">
+                                View
+                            </a>
+                            <a href="{{ url_for('edit_scholarship', sid=s.id) }}" class="btn btn-small btn-primary">
+                                Edit
+                            </a>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="detail-text" style="margin-top: 10px;">
+                No scholarships have been added yet. Use “Add scholarship” to create the first entry.
+            </p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

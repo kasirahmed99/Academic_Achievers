@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% if s %}
+    {% set page_title = "Edit scholarship" %}
+{% else %}
+    {% set page_title = "Add scholarship" %}
+{% endif %}
+{% block title %}{{ page_title }} – Admin{% endblock %}
+
+{% block content %}
+<div class="form-page" style="max-width: 720px;">
+    <div class="section-header">
+        <div class="section-title">{{ page_title }}</div>
+        <div class="section-sub">
+            Fill in as much detail as possible to help students understand the opportunity.
+        </div>
+    </div>
+
+    <div class="form-card">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="form-label" for="name">Scholarship name</label>
+                <input class="form-input" type="text" id="name" name="name"
+                       value="{{ s.name if s }}" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="country">Country</label>
+                <input class="form-input" type="text" id="country" name="country"
+                       value="{{ s.country if s }}" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="university">University / Provider (optional)</label>
+                <input class="form-input" type="text" id="university" name="university"
+                       value="{{ s.university if s }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="level">Level (Bachelor, Master, PhD)</label>
+                <input class="form-input" type="text" id="level" name="level"
+                       value="{{ s.level if s }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="field">Field of study (optional)</label>
+                <input class="form-input" type="text" id="field" name="field"
+                       value="{{ s.field if s }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="tags">Tags (comma separated)</label>
+                <input class="form-input" type="text" id="tags" name="tags"
+                       value="{{ s.tags if s }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="deadline">Deadline (YYYY-MM-DD or text)</label>
+                <input class="form-input" type="text" id="deadline" name="deadline"
+                       value="{{ s.deadline if s }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="link">Official link</label>
+                <input class="form-input" type="url" id="link" name="link"
+                       value="{{ s.link if s }}" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="min_gpa">Minimum GPA (optional)</label>
+                <input class="form-input" type="number" step="0.01" id="min_gpa" name="min_gpa"
+                       value="{{ s.min_gpa if s and s.min_gpa is not none }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="checklist">Document checklist (one item per line)</label>
+                <textarea class="form-textarea" id="checklist" name="checklist">{% if s and s.checklist %}{{ "\n".join(s.checklist) }}{% endif %}</textarea>
+            </div>
+
+            <div class="form-checkbox-row">
+                <input type="checkbox" id="is_international_only" name="is_international_only"
+                       {% if s and s.is_international_only %}checked{% endif %}>
+                <label for="is_international_only">For international students only</label>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="image_file">Image (optional)</label>
+                <input class="form-input" type="file" id="image_file" name="image_file" accept="image/*">
+                {% if s and s.image_filename %}
+                    <p class="form-sub">
+                        Current: <a href="{{ url_for('uploaded_file', filename=s.image_filename) }}" target="_blank">View uploaded image</a>
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="brochure_file">Brochure / PDF (optional)</label>
+                <input class="form-input" type="file" id="brochure_file" name="brochure_file" accept=".pdf,.doc,.docx">
+                {% if s and s.brochure_filename %}
+                    <p class="form-sub">
+                        Current: <a href="{{ url_for('uploaded_file', filename=s.brochure_filename) }}" target="_blank">Download brochure</a>
+                    </p>
+                {% endif %}
+            </div>
+
+            <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
