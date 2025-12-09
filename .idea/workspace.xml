@@ -4,25 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e6c77e8-dbae-425a-b224-caf3f719856b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Academic Achievers.iml" afterDir="false" />
+    <list default="true" id="5e6c77e8-dbae-425a-b224-caf3f719856b" name="Changes" comment="commit">
       <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/seed_scholarships.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/add_edit_scholarship.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/admin_dashboard.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/admin_login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/eligibility.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/scholarship_detail.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/scholarships.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,12 +104,76 @@
       <workItem from="1765142746447" duration="1790000" />
       <workItem from="1765146548117" duration="3982000" />
       <workItem from="1765151823610" duration="3544000" />
-      <workItem from="1765192991038" duration="8917000" />
+      <workItem from="1765192991038" duration="10210000" />
     </task>
+    <task id="LOCAL-00001" summary="commit">
+      <option name="closed" value="true" />
+      <created>1765237126815</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765237126815</updated>
+    </task>
+    <task id="LOCAL-00002" summary="base">
+      <option name="closed" value="true" />
+      <created>1765237191819</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1765237191819</updated>
+    </task>
+    <task id="LOCAL-00003" summary="home screen">
+      <option name="closed" value="true" />
+      <created>1765237209411</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765237209411</updated>
+    </task>
+    <task id="LOCAL-00004" summary="login screen">
+      <option name="closed" value="true" />
+      <created>1765237227743</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765237227743</updated>
+    </task>
+    <task id="LOCAL-00005" summary="login screen">
+      <option name="closed" value="true" />
+      <created>1765237242051</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1765237242051</updated>
+    </task>
+    <task id="LOCAL-00006" summary="commit">
+      <option name="closed" value="true" />
+      <created>1765237278822</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1765237278822</updated>
+    </task>
+    <task id="LOCAL-00007" summary="commit">
+      <option name="closed" value="true" />
+      <created>1765237293559</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765237293559</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="base" />
+    <MESSAGE value="home screen" />
+    <MESSAGE value="login screen" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Academic_Achievers$app.coverage" NAME="app Coverage Results" MODIFIED="1765236192848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
