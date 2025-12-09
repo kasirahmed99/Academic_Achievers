@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}{{ s.name }} – Scholarship Details{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <div class="section-title">Scholarship details</div>
+    <div class="section-sub">
+        Carefully review requirements, deadlines and the official application link.
+    </div>
+</div>
+
+<div class="detail-layout">
+    <section class="detail-main">
+        <div class="detail-title-row">
+            <h1 class="detail-title">{{ s.name }}</h1>
+            <p class="detail-sub">
+                {% if s.university %}
+                    {{ s.university }} ·
+                {% endif %}
+                {{ s.country }}
+                {% if s.level %}
+                    · {{ s.level }}
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="tag-row">
+            <span class="tag main">🌍 {{ s.country }}</span>
+            {% if s.level %}
+                <span class="tag">🎓 {{ s.level }}</span>
+            {% endif %}
+            {% if s.field %}
+                <span class="tag">📚 {{ s.field }}</span>
+            {% endif %}
+            {% if s.min_gpa %}
+                <span class="tag">GPA ≥ {{ "%.2f"|format(s.min_gpa) }}</span>
+            {% endif %}
+            {% if s.is_international_only %}
+                <span class="tag">🌐 International students only</span>
+            {% endif %}
+            {% if s.tags %}
+                {% for tag_item in s.tags.split(',') %}
+                    {% if tag_item.strip() %}
+                        <span class="tag">#{{ tag_item.strip() }}</span>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Overview</div>
+            <p class="detail-text">
+                This scholarship has been added to Academic Achievers with key details such as
+                country, level, and important deadlines. Always refer to the official link
+                for the most accurate and updated information.
+            </p>
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Required documents</div>
+            {% if s.checklist %}
+                <ul class="detail-list">
+                    {% for item in s.checklist %}
+                        <li>• {{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="detail-text">
+                    The admin has not added a document checklist yet. Please check the official page for full requirements.
+                </p>
+            {% endif %}
+        </div>
+
+        {% if s.image_filename or s.brochure_filename %}
+        <div class="detail-section">
+            <div class="detail-section-title">Attachments</div>
+            <ul class="detail-list">
+                {% if s.image_filename %}
+                    <li>
+                        📸 <a href="{{ url_for('uploaded_file', filename=s.image_filename) }}" target="_blank">
+                            View scholarship image
+                        </a>
+                    </li>
+                {% endif %}
+                {% if s.brochure_filename %}
+                    <li>
+                        📄 <a href="{{ url_for('uploaded_file', filename=s.brochure_filename) }}" target="_blank">
+                            Download brochure
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="detail-section">
+            <div class="detail-section-title">Official link</div>
+            <p class="detail-text">
+                Always apply through the official website:
+                <br>
+                <a href="{{ s.link }}" target="_blank">{{ s.link }}</a>
+            </p>
+        </div>
+
+        <div class="apply-bar">
+            <div class="apply-inner">
+                <div class="apply-meta">
+                    {% if s.deadline %}
+                        <strong>Deadline:</strong> {{ s.deadline }}<br>
+                    {% else %}
+                        <strong>Deadline:</strong> Not specified, check official site.<br>
+                    {% endif %}
+                    Apply directly on the official scholarship website.
+                </div>
+                <a href="{{ s.link }}" target="_blank" class="btn btn-primary btn-small apply-btn">
+                    Apply now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <aside class="detail-side">
+        <div class="side-card">
+            <div class="side-title">Quick facts</div>
+            <p class="detail-text">
+                Country: {{ s.country }}<br>
+                {% if s.level %}Level: {{ s.level }}<br>{% endif %}
+                {% if s.field %}Field: {{ s.field }}<br>{% endif %}
+                {% if s.deadline %}Deadline: {{ s.deadline }}<br>{% endif %}
+                {% if s.min_gpa %}Minimum GPA: {{ "%.2f"|format(s.min_gpa) }}{% endif %}
+            </p>
+        </div>
+
+        <div class="side-card">
+            <div class="side-title">Tip</div>
+            <p class="detail-text">
+                Start preparing your documents early: language tests, recommendation letters
+                and motivation statements often take more time than expected.
+            </p>
+        </div>
+    </aside>
+</div>
+{% endblock %}

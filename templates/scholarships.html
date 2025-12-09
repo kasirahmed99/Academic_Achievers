@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Scholarships – Academic Achievers{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <div class="section-title">Scholarships</div>
+    <div class="section-sub">
+        Search, filter, and sort scholarships curated by Academic Achievers.
+    </div>
+</div>
+
+<div class="sch-filters">
+    <form method="get" class="sch-filter-form">
+        <div class="field">
+            <label for="q">Search by name</label>
+            <input class="input" type="text" id="q" name="q"
+                   value="{{ request.args.get('q','') }}"
+                   placeholder="e.g. DAAD, Chevening, Erasmus">
+        </div>
+
+        <div class="field">
+            <label for="country">Country</label>
+            <input class="input" type="text" id="country" name="country"
+                   value="{{ request.args.get('country','') }}"
+                   placeholder="e.g. Germany, Canada">
+        </div>
+
+        <div class="field">
+            <label for="sort">Sort by deadline</label>
+            <select class="select" id="sort" name="sort">
+                <option value="">Default</option>
+                <option value="deadline_asc"
+                    {% if request.args.get('sort') == 'deadline_asc' %}selected{% endif %}>
+                    Soonest first
+                </option>
+                <option value="deadline_desc"
+                    {% if request.args.get('sort') == 'deadline_desc' %}selected{% endif %}>
+                    Latest first
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-small">
+            Apply filters
+        </button>
+    </form>
+</div>
+
+{% if scholarships %}
+    <div class="sch-list">
+        {% for s in scholarships %}
+            <article class="sch-card">
+                <div class="sch-pill-row">
+                    <span class="sch-pill">🌍 {{ s.country }}</span>
+                    {% if s.level %}
+                        <span class="sch-pill">🎓 {{ s.level }}</span>
+                    {% endif %}
+                    {% if s.deadline %}
+                        <span class="sch-pill deadline">⏰ {{ s.deadline }}</span>
+                    {% endif %}
+                </div>
+
+                <h2 class="sch-name">{{ s.name }}</h2>
+                <p class="sch-sub">
+                    {% if s.university %}
+                        {{ s.university }}
+                    {% else %}
+                        Curated by Academic Achievers
+                    {% endif %}
+                </p>
+
+                <div class="sch-bottom">
+                    <a href="{{ url_for('scholarship_detail', sid=s.id) }}" class="link-inline">
+                        View details →
+                    </a>
+                    <a href="{{ s.link }}" target="_blank" class="btn btn-small btn-secondary">
+                        Apply
+                    </a>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="section-sub" style="margin-top: 20px;">
+        No scholarships match your filters yet. Try clearing the search or changing the country.
+    </p>
+{% endif %}
+{% endblock %}
