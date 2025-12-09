@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Sign Up – Academic Achievers{% endblock %}
+
+{% block content %}
+<div class="form-page">
+    <div class="section-header">
+        <div class="section-title">Create your account</div>
+        <div class="section-sub">
+            Save scholarships, track applications and get organized.
+        </div>
+    </div>
+
+    <div class="form-card">
+        <h1 class="form-title">Sign up</h1>
+        <p class="form-sub">
+            Use a valid email address. You can change your password later.
+        </p>
+
+        {% if error %}
+            <div class="error-text">{{ error }}</div>
+        {% endif %}
+
+        <form method="post">
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" type="email" name="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-input" type="password" name="password" id="password" required>
+            </div>
+
+            <div style="margin-top: 14px;">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    Sign up
+                </button>
+            </div>
+
+            <p class="form-sub" style="margin-top: 10px;">
+                Already have an account?
+                <a href="{{ url_for('login') }}">Log in</a>.
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
